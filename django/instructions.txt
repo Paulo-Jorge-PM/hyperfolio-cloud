@@ -1,0 +1,20 @@
+
+Links:
+
+Django Admin Panel:
+http://localhost:8003/admin
+
+Django Rest API:
+    - E.g. users: http://localhost:8003/users/
+    
+OAS3 Rest API served by Django:
+    http://localhost:8003/api/
+    
+Admin pass:
+-paulo
+-same old pass
+
+Migrations:
+cd project
+1: python3 manage.py makemigrations
+2: python3 manage.py migrate

@@ -1,0 +1,17 @@
+
+-Obter todas as Ocupações em PT: ("en" para inglês)
+select ?occupation where { 
+?o a <http://data.europa.eu/esco/model#Occupation> .
+?o <http://www.w3.org/2004/02/skos/core#prefLabel> ?occupation .
+FILTER langMatches( lang(?occupation), "pt" )
+}
+
+ou
+
+PREFIX esco: <http://data.europa.eu/esco/model#>
+select ?occupation where { 
+?o rdf:type esco:Occupation.
+?o <http://www.w3.org/2004/02/skos/core#prefLabel> ?occupation .
+FILTER langMatches( lang(?occupation), "pt" )
+}
+

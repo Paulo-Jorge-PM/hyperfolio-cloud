@@ -1,0 +1,11 @@
+Django
+django-cors-headers
+
+drf-spectacular
+djangorestframework
+
+djangorestframework-simplejwt
+
+
+#drf-yasg
+

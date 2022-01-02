@@ -1,0 +1,35 @@
+
+
+
+        APIGATEWAY
+            |
+           AUTH
+     (auth key = ok?)
+     (No)       (Yes)
+      |           |
+    LOGIN       CLOUD ... (services)
+                  
+                  
+MICROSERVICES:
+
+1. Auth | http://localhost:8001
+    -Login
+    -Logout
+    -Register
+    -Delete
+
+2. Users | http://localhost:8002
+    -Profile
+    -CV
+    -User (for Posts common info related with user that posted: name, job, thumbnail)
+    
+3. Posts | http://localhost:8003
+    -
+    -
+    -
+
+4. Assets |  | http://localhost:8004
+    -
+    -
+
+       

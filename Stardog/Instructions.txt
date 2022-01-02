@@ -1,0 +1,15 @@
+
+
+Run Stardog with:
+> start_stardog.sh
+API port in:
+http://localhost:5820
+Note: 1st install maybe need to run the pull sh 1st 
+
+Run Startgo Studio (web interface) with:
+> start_studio_stardog.sh
+Entrypoint at:
+http://localhost:7888
+Note: 1st install maybe need to run the pull sh 1st
+
+Or run all with run.sh

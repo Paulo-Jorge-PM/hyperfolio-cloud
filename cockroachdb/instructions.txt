@@ -1,0 +1,14 @@
+Run:
+docker-compose up
+
+Build novamnete:
+docker-compose build
+
+Admin em:
+http://localhost:8008
+
+Coneços DB em:
+http://localhost:26257
+
+Se 1ª vez criar network:
+docker network create roachnet

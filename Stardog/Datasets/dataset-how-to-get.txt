@@ -1,0 +1,9 @@
+This project uses the "esco_v1.0.3.ttl" dataset, but it is too large for git (400+Mbs) so we gitignored it.
+
+In order to get it, go to the oficial ESCO UE website and download it:
+https://ec.europa.eu/esco/portal/download
+
+And import it into Startdog after launching it, with "ESCO" as the repo name (Hyperfolio frontend app will query that repo on the default Satrdog port microsservice).
+
+Download the "ESCO v1 classification / Full RDF v1.0.3 (472MB)" full version v1.0.3 - or a newer version release if compatible.
+

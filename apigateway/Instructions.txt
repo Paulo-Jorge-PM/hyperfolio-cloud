@@ -1,0 +1,27 @@
+
+Run with Docker Compose:
+
+Run all apps:
+> docker-compose up
+
+
+Build all apps (if needed, not needed by default):
+> docker-compose build
+
+
+Uses: Kong + Konga + PostegreSQL
+Exposes the endpoints:
+- Konga Admin frontend in: http://localhost:1337
+- Kong Admin: http://172.17.0.1:8001 or http://localhost:8001
+- Main endpoint for requests: http://localhost:8000
+
+
+Login Konga:
+- First time build: create an admin login in the Konga frontend endpont
+- My local login: My email / Nickname + first_general_pass ford mustang)
+- For deployment will save export snapshots in "konga_exports" - just import them when building in a new machine
+
+
+Note: 
+Created a docker network:
+>docker network create kong-net

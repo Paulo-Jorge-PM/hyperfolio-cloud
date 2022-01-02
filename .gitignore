@@ -1,0 +1,8 @@
+*.pyc
+__pycache__
+
+# Don't upload the ESCO dataset (in the Stardog service folder): too large for git:
+**/esco_v1.0.3.ttl
+
+Don't upload the CockroachDB folder with the database data: big files make git sad:
+**/cockroach-data

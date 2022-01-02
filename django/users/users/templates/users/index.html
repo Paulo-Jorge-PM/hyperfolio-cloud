@@ -1,0 +1,11 @@
+<h1>Buuuu</h1>
+
+{% if latest_profiles %}
+    <ul>
+    {% for profile in latest_profiles %}
+        <li><a href="/profiles/{{ profile.id }}/">{{ profile.fullName }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No profiles are available.</p>
+{% endif %}
