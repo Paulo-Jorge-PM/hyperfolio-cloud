@@ -14,7 +14,39 @@ Admin pass:
 -paulo
 -same old pass
 
+New admin user:
+python3 manage.py createsuperuser
+
 Migrations:
 cd project
 1: python3 manage.py makemigrations
 2: python3 manage.py migrate
+
+
+
+Reset / new intallation:
+1- delete sqlite file and migrations folders inside each app folder (inside posts and inside api)
+
+2- Create new db schemas:
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+3- Create new super admin user (default: paulo / u***o):
+python3 manage.py createsuperuser
+
+4- Sync/create the tables in the DB:
+manage.py migrate --run-syncdb
+
+5- Done
+
+
+
+
+
+
+Misc:
+- Sync/create tables:
+python3 manage.py migrate --run-syncdb
+
+Fkae migrations for syncing old dbs:
+python3 manage.py migrate --fake

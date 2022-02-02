@@ -1,6 +1,9 @@
 from django.db import models
 #from django.contrib.auth.models import User
 
+def json_default():
+    return {"var":"x"}
+
 class Post(models.Model):
     TYPES_CHOICE = [
         ('Text', 'Text'),
@@ -19,15 +22,14 @@ class Post(models.Model):
     
     title = models.CharField(max_length=255, blank=False)
     body = models.TextField(max_length=10000, blank=True)
-    thumbnail = models.CharField(max_length=255, blank=True)
-    tags = models.TextField(max_length=1000, blank=True)
+    thumbnail = models.CharField(max_length=255, blank=True, default="01-image.jpg")
     typePost = models.CharField(
                                 choices=TYPES_CHOICE,
-                                default='Text',
+                                default='Artifact',
                                 max_length=20, 
                                 blank=False
                                 )
-    typeId = models.IntegerField(blank=False)
+    typeId = models.IntegerField(blank=False, default=0)
     rate = models.CharField(max_length=255, blank=True)
     dateCreated = models.DateField(null=True, blank=False)
     
@@ -38,8 +40,17 @@ class Post(models.Model):
                                 max_length=20, 
                                 blank=False
                                 )
-    assets = models.TextField(max_length=3000, null=True, blank=True)
-    comments = models.TextField(max_length=6000, null=True, blank=True)
+    tags = models.JSONField(default=list, null=True, blank=True)
+                      
+    assets = models.JSONField(default=list, null=True, blank=True)
+    comments = models.JSONField(default=list, null=True, blank=True)
+    
+    #jobs = models.TextField(max_length=6000, null=True, blank=True)
+    #jobs = models.TextField(max_length=6000, null=True, blank=True, default=list) #defualt=list / default=dict 
+    jobs = models.JSONField(default=list, null=True, blank=True)
+    skills = models.JSONField(default=list, null=True, blank=True)
+    persons = models.JSONField(default=list, null=True, blank=True)
+
     
     """assets = models.ManyToManyField(
         Assets,
