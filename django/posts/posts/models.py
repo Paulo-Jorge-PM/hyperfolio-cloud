@@ -1,8 +1,15 @@
 from django.db import models
 #from django.contrib.auth.models import User
 
-def json_default():
-    return {"var":"x"}
+from datetime import date, datetime
+
+def user_directory_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+    timestamp = datetime.now().timestamp()
+    return 'static/assets/user_{0}/{1}'.format(instance.user, str(timestamp)+"_"+filename)
+
+#def json_default():
+#    return {"var":"x"}
 
 class Post(models.Model):
     TYPES_CHOICE = [
@@ -22,7 +29,8 @@ class Post(models.Model):
     
     title = models.CharField(max_length=255, blank=False)
     body = models.TextField(max_length=10000, blank=True)
-    thumbnail = models.CharField(max_length=255, blank=True, default="01-image.jpg")
+    #thumbnail = models.CharField(max_length=255, blank=True, default="01-image.jpg")
+    thumbnail = models.JSONField(default=list, null=True, blank=True)
     typePost = models.CharField(
                                 choices=TYPES_CHOICE,
                                 default='Artifact',
@@ -31,7 +39,7 @@ class Post(models.Model):
                                 )
     typeId = models.IntegerField(blank=False, default=0)
     rate = models.CharField(max_length=255, blank=True)
-    dateCreated = models.DateField(null=True, blank=False)
+    dateCreated = models.DateField(blank=False, default=date.today, editable=False)
     
     views = models.IntegerField(blank=False, default=0)
     privacy = models.CharField(
@@ -40,7 +48,7 @@ class Post(models.Model):
                                 max_length=20, 
                                 blank=False
                                 )
-    tags = models.JSONField(default=list, null=True, blank=True)
+    categories = models.JSONField(default=list, null=True, blank=True)
                       
     assets = models.JSONField(default=list, null=True, blank=True)
     comments = models.JSONField(default=list, null=True, blank=True)
@@ -64,7 +72,7 @@ class Post(models.Model):
     )"""
     
     def __str__(self):
-        return self.title
+        return "ID: " + str(self.id) + " | Title: " + self.title
 
 
 class Text(models.Model):
@@ -101,3 +109,29 @@ class Activity(models.Model):
     
     def __str__(self):
         return str(self.postId)
+        
+        
+class Asset(models.Model):
+    FILES_CHOICES = [
+        ('Misc', 'Misc'),
+        ('Image', 'Image'),
+        ('Animation', 'Animation'),
+        ('Video', 'Video'),
+        ('Sound', 'Sound'),
+        ('Document', 'Document'),
+        ('3DModel', '3DModel'),
+    ]
+
+    user = models.IntegerField(blank=False)
+    fileLink = models.CharField(max_length=255, blank=True)
+    fileUpload = models.FileField(upload_to=user_directory_path, blank=True)
+    dateCreated = models.DateField(blank=True, default=date.today, editable=False)
+    fileTye = models.CharField(
+                                choices=FILES_CHOICES,
+                                default='Misc',
+                                max_length=20, 
+                                blank=True
+                                )
+
+    def __str__(self):
+        return "UserId: " + str(self.user) + " | ID: " + str(self.id)

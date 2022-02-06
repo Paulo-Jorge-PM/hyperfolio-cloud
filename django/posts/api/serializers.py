@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from posts.models import Post, Text, Artifact, Activity
+from posts.models import Post, Text, Artifact, Activity, Asset
 from rest_framework import serializers
 
 # Auth service
@@ -19,7 +19,13 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class PostsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Post
-        fields = ['id', 'user', 'title', 'body', 'thumbnail', 'tags', 'typePost', 'typeId', 'rate', 'dateCreated', 'views', 'privacy', 'assets', 'comments', "jobs", "skills", "persons"]
+        fields = ['id', 'user', 'title', 'body', 'thumbnail', 'categories', 'typePost', 'typeId', 'rate', 'dateCreated', 'views', 'privacy', 'assets', 'comments', "jobs", "skills", "persons"]
+        
+# Assets service
+class AssetsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Asset
+        fields = ['id', 'user', 'fileUpload', 'fileLink', 'dateCreated', 'fileTye']
         
 class TextSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

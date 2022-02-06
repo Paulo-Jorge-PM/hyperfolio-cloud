@@ -1,11 +1,11 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
-from .serializers import UserSerializer, GroupSerializer, PostsSerializer, TextSerializer, ArtifactSerializer, ActivitySerializer
+from .serializers import UserSerializer, GroupSerializer, PostsSerializer, TextSerializer, ArtifactSerializer, ActivitySerializer, AssetsSerializer
 
 from drf_spectacular.utils import extend_schema, OpenApiParameter
 
-from posts.models import Post, Text, Artifact, Activity
+from posts.models import Post, Text, Artifact, Activity, Asset
 
 
 # Auth service
@@ -39,7 +39,17 @@ class PostsViewSet(viewsets.ModelViewSet):
     serializer_class = PostsSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+# Assets service
+class AssetsViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows assets to be viewed or edited.
+    """
 
+
+    queryset = Asset.objects.all().order_by("-id")
+    serializer_class = AssetsSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
 class TextViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows texts to be viewed or edited.

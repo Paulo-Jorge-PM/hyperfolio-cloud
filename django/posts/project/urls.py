@@ -12,6 +12,7 @@ router.register(r"posts", views.PostsViewSet)
 router.register(r"text", views.TextViewSet)
 router.register(r"artifact", views.ArtifactViewSet)
 router.register(r"activity", views.ActivityViewSet)
+router.register(r"assets", views.AssetsViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, login URLs included for the browsable API.
