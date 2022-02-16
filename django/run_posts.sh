@@ -11,4 +11,6 @@ cd posts
 exec python3 manage.py runserver 8003
 
 #$SHELL
-#exec bash
+exec bash
+
+echo "DONE"

@@ -72,7 +72,7 @@ class Post(models.Model):
     )"""
     
     def __str__(self):
-        return "ID: " + str(self.id) + " | Title: " + self.title
+        return "ID: " + str(self.id) + " | User: " + str(self.user) + " | Title: " + self.title
 
 
 class Text(models.Model):

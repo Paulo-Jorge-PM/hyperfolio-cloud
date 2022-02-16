@@ -21,6 +21,24 @@ class PostsSerializer(serializers.HyperlinkedModelSerializer):
         model = Post
         fields = ['id', 'user', 'title', 'body', 'thumbnail', 'categories', 'typePost', 'typeId', 'rate', 'dateCreated', 'views', 'privacy', 'assets', 'comments', "jobs", "skills", "persons"]
         
+"""
+E.e.: if I only way to see the id, latitude, and longitude:
+class PostsSerializer(serializers.ModelSerializer):
+    
+    def __init__(self, *args, **kwargs):
+        
+        super(PostsSerializer, self).__init__(*args, **kwargs)
+        request = self.context.get("request")
+        if request and request.query_params.get('fields'):
+            fields = request.query_params.get('fields')
+            if fields:
+                fields = fields.split(',')
+                allowed = set(fields)
+                existing = set(self.fields.keys())
+                for field_name in existing - allowed:
+                    self.fields.pop(field_name)
+"""
+        
 # Assets service
 class AssetsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
